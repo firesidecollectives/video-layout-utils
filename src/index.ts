@@ -1,9 +1,3 @@
-import * as utils from "./utils";
-import { portraitCalculators } from "./portrait-calculators";
-import { landscapeCalculators } from "./landscape-calculators";
-
-export default {
-  utils,
-  portraitCalculators,
-  landscapeCalculators,
-};
+export * as utils from "./utils";
+export { portraitCalculators } from "./portrait-calculators";
+export { landscapeCalculators } from "./landscape-calculators";
