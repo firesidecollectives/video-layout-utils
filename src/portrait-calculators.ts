@@ -255,6 +255,7 @@ export const portraitCalculators: Record<DimensionKey, DimensionCalculator> = {
       {
         height: landscapeHeight,
         width: landscapeWidth,
+        left: getCenterOffset(containerWidth, landscapeWidth),
         top: portraitHeight,
       },
       {
