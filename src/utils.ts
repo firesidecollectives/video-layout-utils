@@ -1,3 +1,5 @@
+export type Orientation = "l" | "p";
+
 export type DimensionKey =
   | "p"
   | "l"

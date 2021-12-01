@@ -1,3 +1,4 @@
+export declare type Orientation = "l" | "p";
 export declare type DimensionKey = "p" | "l" | "pp" | "pl" | "lp" | "ll" | "ppp" | "ppl" | "plp" | "pll" | "lpp" | "lpl" | "llp" | "lll" | "pppp" | "pppl" | "pplp" | "ppll" | "plpp" | "plpl" | "pllp" | "plll" | "lppp" | "lppl" | "lplp" | "lpll" | "llpp" | "llpl" | "lllp" | "llll";
 declare type DimensionCalculatorInput = {
     containerHeight: number;
