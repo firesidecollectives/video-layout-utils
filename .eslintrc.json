@@ -10,7 +10,7 @@
     "sourceType": "module"
   },
   "plugins": ["@typescript-eslint"],
-  "ignorePatterns": "*.js",
+  "ignorePatterns": "lib",
   "rules": {
     "import/extensions": 0
   },

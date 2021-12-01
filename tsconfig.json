@@ -2,7 +2,8 @@
   "compilerOptions": {
     "strict": true,
     "target": "ES5",
-    "outDir": "lib"
+    "outDir": "lib",
+    "declaration": true
   },
   "files": ["src/index.ts"]
 }

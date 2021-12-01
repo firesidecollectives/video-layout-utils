@@ -10,7 +10,7 @@
   "scripts": {
     "build": "tsc",
     "prepare": "husky install",
-    "lint": "eslint *.ts **/*.ts"
+    "lint": "eslint"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.5.0",
