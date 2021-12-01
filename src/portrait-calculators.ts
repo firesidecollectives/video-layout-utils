@@ -962,7 +962,7 @@ export const portraitCalculators: Record<DimensionKey, DimensionCalculator> = {
   lpll: ({ containerWidth, containerHeight, insets }) => {
     const { height: landscapeHeight, width: landscapeWidth } =
       findLargestLandscapeBox({
-        height: containerHeight / 4,
+        height: containerHeight / 4.5,
         width: containerWidth,
       });
 
@@ -1054,7 +1054,7 @@ export const portraitCalculators: Record<DimensionKey, DimensionCalculator> = {
   llpl: ({ containerWidth, containerHeight, insets }) => {
     const { height: landscapeHeight, width: landscapeWidth } =
       findLargestLandscapeBox({
-        height: containerHeight / 4,
+        height: containerHeight / 4.5,
         width: containerWidth,
       });
 
@@ -1100,7 +1100,7 @@ export const portraitCalculators: Record<DimensionKey, DimensionCalculator> = {
   lllp: ({ containerWidth, containerHeight, insets }) => {
     const { height: landscapeHeight, width: landscapeWidth } =
       findLargestLandscapeBox({
-        height: containerHeight / 4,
+        height: containerHeight / 4.5,
         width: containerWidth,
       });
 
