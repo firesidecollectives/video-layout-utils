@@ -41,7 +41,7 @@ type DimensionCalculatorInput = {
     bottom: number;
     left: number;
   };
-  isLandscapeRight: boolean;
+  isLandscapeRight?: boolean;
 };
 
 type DimensionCalculatorOutput = {

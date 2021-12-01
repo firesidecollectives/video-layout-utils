@@ -9,7 +9,7 @@ declare type DimensionCalculatorInput = {
         bottom: number;
         left: number;
     };
-    isLandscapeRight: boolean;
+    isLandscapeRight?: boolean;
 };
 declare type DimensionCalculatorOutput = {
     height: number;
