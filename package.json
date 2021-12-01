@@ -9,12 +9,23 @@
   "private": true,
   "scripts": {
     "build": "tsc",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "lint": "eslint *.ts **/*.ts"
   },
   "devDependencies": {
-    "husky": "^7.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.5.0",
+    "@typescript-eslint/parser": "^5.5.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.3",
+    "husky": ">=6",
+    "lint-staged": ">=10",
     "prettier": "^2.5.0",
-    "pretty-quick": "^3.1.2",
     "typescript": "^4.5.2"
+  },
+  "lint-staged": {
+    "*.ts": "eslint --cache --fix",
+    "*.{ts,json}": "prettier --write"
   }
 }
