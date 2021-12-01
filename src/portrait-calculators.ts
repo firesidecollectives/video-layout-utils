@@ -913,22 +913,22 @@ export const portraitCalculators: Record<DimensionKey, DimensionCalculator> = {
       },
     ];
   },
-  lplp: ({ containerWidth, containerHeight, insets }) => {
+  lplp: ({ containerWidth, containerHeight }) => {
     const { height: landscapeHeight, width: landscapeWidth } =
       findLargestLandscapeBox({
-        height: containerHeight / 4,
+        height: containerHeight / 3,
         width: containerWidth,
       });
 
     const { height: portraitHeight, width: portraitWidth } =
       findLargestPortraitBox({
-        height: (containerHeight - 2 * landscapeHeight) / 2,
-        width: containerWidth,
+        height: containerHeight - 2 * landscapeHeight,
+        width: containerWidth / 2,
       });
 
     const top = getCenterOffset(
       containerHeight,
-      2 * (portraitHeight + landscapeHeight)
+      portraitHeight + 2 * landscapeHeight
     );
 
     return [
@@ -937,25 +937,25 @@ export const portraitCalculators: Record<DimensionKey, DimensionCalculator> = {
         width: landscapeWidth,
         left: getCenterOffset(containerWidth, landscapeWidth),
         top,
-        nameTop: insets.top,
       },
       {
         height: portraitHeight,
         width: portraitWidth,
-        left: getCenterOffset(containerWidth, portraitWidth),
-        top: top + landscapeHeight,
+        left: getCenterOffset(containerWidth, 2 * portraitWidth),
+        top: top + 2 * landscapeHeight,
       },
       {
         height: landscapeHeight,
         width: landscapeWidth,
         left: getCenterOffset(containerWidth, landscapeWidth),
-        top: top + landscapeHeight + portraitHeight,
+        top: top + landscapeHeight,
       },
       {
         height: portraitHeight,
         width: portraitWidth,
-        left: getCenterOffset(containerWidth, portraitWidth),
-        top: top + 2 * landscapeHeight + portraitHeight,
+        left:
+          portraitWidth + getCenterOffset(containerWidth, 2 * portraitWidth),
+        top: top + 2 * landscapeHeight,
       },
     ];
   },
