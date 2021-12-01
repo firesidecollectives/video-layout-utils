@@ -6,5 +6,11 @@
   "repository": "git@github.com:firesidecollectives/video-layout-utils.git",
   "author": "Igor Šćekić <iscekic@protonmail.com>",
   "license": "UNLICENSED",
-  "private": true
+  "private": true,
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "typescript": "^4.5.2"
+  }
 }
