@@ -1,0 +1,10 @@
+{
+  "name": "video-layout-utils",
+  "version": "1.0.0",
+  "description": "Collection of video layout utils used by web/mobile.",
+  "main": "lib/index.js",
+  "repository": "git@github.com:firesidecollectives/video-layout-utils.git",
+  "author": "Igor Šćekić <iscekic@protonmail.com>",
+  "license": "UNLICENSED",
+  "private": true
+}
