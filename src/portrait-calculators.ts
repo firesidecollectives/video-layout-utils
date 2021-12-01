@@ -191,16 +191,16 @@ export const portraitCalculators: Record<DimensionKey, DimensionCalculator> = {
     ];
   },
   ppl: ({ containerWidth, containerHeight }) => {
+    const { height: portraitHeight, width: portraitWidth } =
+      findLargestPortraitBox({
+        height: (containerHeight * 2) / 3,
+        width: containerWidth / 2,
+      });
+
     const { height: landscapeHeight, width: landscapeWidth } =
       findLargestLandscapeBox({
         width: containerWidth,
-        height: containerHeight / 3,
-      });
-
-    const { height: portraitHeight, width: portraitWidth } =
-      findLargestPortraitBox({
-        height: containerHeight - landscapeHeight,
-        width: containerWidth / 2,
+        height: containerHeight - portraitHeight,
       });
 
     const portraitTop = getCenterOffset(
