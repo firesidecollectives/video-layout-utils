@@ -8,9 +8,16 @@
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "prepare": "husky install"
   },
   "devDependencies": {
+    "husky": ">=6",
+    "lint-staged": ">=10",
+    "prettier": "^2.5.0",
     "typescript": "^4.5.2"
+  },
+  "lint-staged": {
+    "*.ts": "prettier --write"
   }
 }
