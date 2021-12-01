@@ -345,39 +345,39 @@ export const landscapeCalculators: Record<DimensionKey, DimensionCalculator> = {
     const { height: portraitHeight, width: portraitWidth } =
       findLargestPortraitBox({
         height: containerHeight,
-        width: Math.min((containerHeight * 9) / 16, containerWidth / 3),
+        width: containerWidth / 3,
       });
 
     const { height: landscapeHeight, width: landscapeWidth } =
       findLargestLandscapeBox({
         height: containerHeight,
-        width: containerWidth - 2 * portraitWidth,
+        width: (containerWidth - portraitWidth) / 2,
       });
 
     const left = getCenterOffset(
       containerWidth,
-      2 * portraitWidth + landscapeWidth
+      2 * landscapeWidth + portraitWidth
     );
 
     return [
       {
+        height: landscapeHeight,
+        width: landscapeWidth,
+        left,
+        top: getCenterOffset(containerHeight, landscapeHeight),
+        nameLeft: isLandscapeRight ? undefined : insets.left,
+      },
+      {
         height: portraitHeight,
         width: portraitWidth,
+        left: left + landscapeWidth,
         top: getCenterOffset(containerHeight, portraitHeight),
-        left,
-        nameLeft: isLandscapeRight ? undefined : insets.left,
       },
       {
         height: landscapeHeight,
         width: landscapeWidth,
-        left: left + portraitWidth,
-        top: getCenterOffset(containerHeight, landscapeHeight),
-      },
-      {
-        height: portraitHeight,
-        width: portraitWidth,
-        top: getCenterOffset(containerHeight, portraitHeight),
         left: left + landscapeWidth + portraitWidth,
+        top: getCenterOffset(containerHeight, landscapeHeight),
       },
     ];
   },
