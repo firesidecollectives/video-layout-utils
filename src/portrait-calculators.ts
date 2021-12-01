@@ -6,10 +6,7 @@ import {
   DimensionCalculator,
 } from "./utils";
 
-export const portraitDimensionCalculators: Record<
-  DimensionKey,
-  DimensionCalculator
-> = {
+export const portraitCalculators: Record<DimensionKey, DimensionCalculator> = {
   p: ({ containerWidth, containerHeight }) => {
     const { width, height } = findLargestPortraitBox({
       height: containerHeight,
