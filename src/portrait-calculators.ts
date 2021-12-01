@@ -628,57 +628,49 @@ export const portraitCalculators: Record<DimensionKey, DimensionCalculator> = {
       },
     ];
   },
-  plpp: ({ containerWidth, containerHeight, insets }) => {
+  plpp: ({ containerWidth, containerHeight }) => {
     const { height: landscapeHeight, width: landscapeWidth } =
       findLargestLandscapeBox({
-        height: containerHeight / 3,
+        height: containerHeight / 2,
         width: containerWidth,
       });
 
-    const { height: bottomPortraitHeight, width: bottomPortraitWidth } =
+    const { height: portraitHeight, width: portraitWidth } =
       findLargestPortraitBox({
-        height: (containerHeight - landscapeHeight) / 2,
-        width: containerWidth / 2,
-      });
-
-    const { height: topPortraitHeight, width: topPortraitWidth } =
-      findLargestPortraitBox({
-        height: containerHeight - bottomPortraitHeight - landscapeHeight,
-        width: containerWidth,
+        height: containerHeight - landscapeHeight,
+        width: containerWidth / 3,
       });
 
     const top = getCenterOffset(
       containerHeight,
-      topPortraitHeight + bottomPortraitHeight + landscapeHeight
+      portraitHeight + landscapeHeight
     );
+    const portraitLeft = getCenterOffset(containerWidth, portraitWidth * 3);
 
     return [
       {
-        height: topPortraitHeight,
-        width: topPortraitWidth,
-        left: getCenterOffset(containerWidth, topPortraitWidth),
+        height: portraitHeight,
+        width: portraitWidth,
+        left: portraitLeft,
         top,
-        nameTop: insets.top,
       },
       {
         height: landscapeHeight,
         width: landscapeWidth,
         left: getCenterOffset(containerWidth, landscapeWidth),
-        top: top + topPortraitHeight,
+        top: top + portraitHeight,
       },
       {
-        height: bottomPortraitHeight,
-        width: bottomPortraitWidth,
-        left: getCenterOffset(containerWidth, bottomPortraitWidth * 2),
-        top: top + topPortraitHeight + landscapeHeight,
+        height: portraitHeight,
+        width: portraitWidth,
+        left: portraitLeft + portraitWidth,
+        top,
       },
       {
-        height: bottomPortraitHeight,
-        width: bottomPortraitWidth,
-        left:
-          getCenterOffset(containerWidth, bottomPortraitWidth * 2) +
-          bottomPortraitWidth,
-        top: top + topPortraitHeight + landscapeHeight,
+        height: portraitHeight,
+        width: portraitWidth,
+        left: portraitLeft + 2 * portraitWidth,
+        top,
       },
     ];
   },
