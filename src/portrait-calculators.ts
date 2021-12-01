@@ -674,31 +674,30 @@ export const portraitCalculators: Record<DimensionKey, DimensionCalculator> = {
       },
     ];
   },
-  plpl: ({ containerWidth, containerHeight, insets }) => {
+  plpl: ({ containerWidth, containerHeight }) => {
     const { height: landscapeHeight, width: landscapeWidth } =
       findLargestLandscapeBox({
-        height: containerHeight / 4,
+        height: containerHeight / 3,
         width: containerWidth,
       });
 
     const { height: portraitHeight, width: portraitWidth } =
       findLargestPortraitBox({
-        height: (containerHeight - 2 * landscapeHeight) / 2,
-        width: containerWidth,
+        height: containerHeight - 2 * landscapeHeight,
+        width: containerWidth / 2,
       });
 
     const top = getCenterOffset(
       containerHeight,
-      2 * (portraitHeight + landscapeHeight)
+      portraitHeight + 2 * landscapeHeight
     );
 
     return [
       {
         height: portraitHeight,
         width: portraitWidth,
+        left: getCenterOffset(containerWidth, 2 * portraitWidth),
         top,
-        left: getCenterOffset(containerWidth, portraitWidth),
-        nameTop: insets.top,
       },
       {
         height: landscapeHeight,
@@ -709,14 +708,15 @@ export const portraitCalculators: Record<DimensionKey, DimensionCalculator> = {
       {
         height: portraitHeight,
         width: portraitWidth,
-        left: getCenterOffset(containerWidth, portraitWidth),
-        top: top + portraitHeight + landscapeHeight,
+        left:
+          portraitWidth + getCenterOffset(containerWidth, 2 * portraitWidth),
+        top,
       },
       {
         height: landscapeHeight,
         width: landscapeWidth,
         left: getCenterOffset(containerWidth, landscapeWidth),
-        top: top + 2 * portraitHeight + landscapeHeight,
+        top: top + portraitHeight + landscapeHeight,
       },
     ];
   },
