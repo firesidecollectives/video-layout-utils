@@ -341,31 +341,32 @@ export const landscapeCalculators: Record<DimensionKey, DimensionCalculator> = {
       },
     ];
   },
-  lpl: ({ containerHeight, containerWidth, insets, isLandscapeRight }) => {
+  lpl: ({ containerHeight, containerWidth }) => {
+    const { height: landscapeHeight, width: landscapeWidth } =
+      findLargestLandscapeBox({
+        height: containerHeight / 2,
+        width: (containerWidth * 2) / 3,
+      });
+
     const { height: portraitHeight, width: portraitWidth } =
       findLargestPortraitBox({
         height: containerHeight,
-        width: containerWidth / 3,
-      });
-
-    const { height: landscapeHeight, width: landscapeWidth } =
-      findLargestLandscapeBox({
-        height: containerHeight,
-        width: (containerWidth - portraitWidth) / 2,
+        width: containerWidth - landscapeWidth,
       });
 
     const left = getCenterOffset(
       containerWidth,
-      2 * landscapeWidth + portraitWidth
+      portraitWidth + landscapeWidth
     );
+
+    const landscapeTop = getCenterOffset(containerHeight, 2 * landscapeHeight);
 
     return [
       {
         height: landscapeHeight,
         width: landscapeWidth,
         left,
-        top: getCenterOffset(containerHeight, landscapeHeight),
-        nameLeft: isLandscapeRight ? undefined : insets.left,
+        top: landscapeTop,
       },
       {
         height: portraitHeight,
@@ -376,8 +377,8 @@ export const landscapeCalculators: Record<DimensionKey, DimensionCalculator> = {
       {
         height: landscapeHeight,
         width: landscapeWidth,
-        left: left + landscapeWidth + portraitWidth,
-        top: getCenterOffset(containerHeight, landscapeHeight),
+        left,
+        top: landscapeTop + landscapeHeight,
       },
     ];
   },
