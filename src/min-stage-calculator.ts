@@ -62,7 +62,7 @@ export const minStageCalculator = ({
 
     widthLeft -= width;
 
-    if (i === videoOrientations.length) {
+    if (i === videoOrientations.length - 1) {
       rows.push(currentRow);
     }
   });
