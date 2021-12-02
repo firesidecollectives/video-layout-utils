@@ -1,3 +1,4 @@
+import flatten from "lodash.flatten";
 import { DimensionKey, Dimensions, Orientation } from "./utils";
 
 type MinStageCalculatorInput = {
@@ -69,22 +70,35 @@ export const minStageCalculator = ({
 
   // once videos are placed in rows, add back missing margins
   // this is done in a post-step because margins are per video in row
-  return rows.map((row) => {
-    const videosInRow = row.length;
-    const gapSpace = (videosInRow - 1) * videoMargin;
+  const gapAdjustedHeights = flatten(
+    rows.map((row) => {
+      const videosInRow = row.length;
+      const gapSpace = (videosInRow - 1) * videoMargin;
 
-    const widthReduction = gapSpace / videosInRow;
+      const widthReduction = gapSpace / videosInRow;
 
-    return row.map((dimensions) => {
-      const isLandscape = dimensions.width > dimensions.height;
+      return row.map((dimensions) => {
+        const isLandscape = dimensions.width > dimensions.height;
 
-      const newWidth = dimensions.width - widthReduction;
-      const newHeight = isLandscape ? (newWidth * 9) / 16 : (newWidth * 16) / 9;
+        const newWidth = dimensions.width - widthReduction;
+        const newHeight = isLandscape
+          ? (newWidth * 9) / 16
+          : (newWidth * 16) / 9;
 
-      return {
-        width: newWidth,
-        height: newHeight,
-      };
-    });
-  });
+        return newHeight;
+      });
+    })
+  );
+
+  const gapAdjustedHeight = Math.min(...gapAdjustedHeights);
+
+  return rows.map((row) =>
+    row.map((dimensions) => ({
+      height: gapAdjustedHeight,
+      width:
+        dimensions.width > dimensions.height
+          ? (gapAdjustedHeight * 16) / 9
+          : (gapAdjustedHeight * 9) / 16,
+    }))
+  );
 };

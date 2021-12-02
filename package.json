@@ -13,6 +13,7 @@
     "lint": "eslint"
   },
   "devDependencies": {
+    "@types/lodash.flatten": "^4.4.6",
     "@typescript-eslint/eslint-plugin": "^5.5.0",
     "@typescript-eslint/parser": "^5.5.0",
     "eslint": "^7.32.0",
@@ -27,5 +28,8 @@
   "lint-staged": {
     "*.ts": "eslint --cache --fix",
     "*.{ts,json}": "prettier --write"
+  },
+  "dependencies": {
+    "lodash.flatten": "^4.4.0"
   }
 }

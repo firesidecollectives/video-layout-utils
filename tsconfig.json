@@ -3,7 +3,8 @@
     "strict": true,
     "target": "ES5",
     "outDir": "lib",
-    "declaration": true
+    "declaration": true,
+    "esModuleInterop": true
   },
   "files": ["src/index.ts"]
 }
