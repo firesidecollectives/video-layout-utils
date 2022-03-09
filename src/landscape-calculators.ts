@@ -466,31 +466,33 @@ export const landscapeCalculators: Record<DimensionKey, DimensionCalculator> = {
     });
 
     const top = getCenterOffset(containerHeight, height);
+    const left = getCenterOffset(containerWidth, 4 * width);
 
     return [
       {
         height,
         width,
         top,
+        left,
         nameLeft: isLandscapeRight ? undefined : insets.left,
       },
       {
         height,
         width,
         top,
-        left: width,
+        left: left + width,
       },
       {
         height,
         width,
         top,
-        left: 2 * width,
+        left: left + 2 * width,
       },
       {
         height,
         width,
         top,
-        left: 3 * width,
+        left: left + 3 * width,
       },
     ];
   },
